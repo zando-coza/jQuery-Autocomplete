@@ -56,7 +56,7 @@
                 serviceUrl: null,
                 lookup: null,
                 onSelect: null,
-                width: 'auto',
+                width: null,
                 minChars: 1,
                 maxHeight: 300,
                 deferRequestBy: 0,
