@@ -29,12 +29,10 @@
                 escapeRegExChars: function (value) {
                     return value.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
                 },
-                createNode: function (containerClass) {
-                    var div = document.createElement('div');
-                    div.className = containerClass;
-                    div.style.position = 'absolute';
-                    div.style.display = 'none';
-                    return div;
+                createNode: function (html) {
+                  var div = document.createElement('div');
+                  div.innerHTML = html;
+                  return div.firstChild;
                 }
             };
         }()),
