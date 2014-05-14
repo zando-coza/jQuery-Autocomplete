@@ -87,6 +87,8 @@
                 suggestWrapper: function suggestionWrapper(i, suggestion, className, formatResult, value) {
                   return '<div class="' + className + '" data-cod="' + suggestion.cod + '" data-index="' + i + '">' + formatResult(suggestion, value) + '</div>';
                 },
+                showAll: null,
+                hideResult: null
             };
 
         // Shared variables:
@@ -420,6 +422,8 @@
 
             if (query.length < options.minChars) {
                 that.hide();
+                $(that.options.showAll).show();
+                $(that.options.hideResult).hide();
             } else {
                 that.getSuggestions(query);
             }
