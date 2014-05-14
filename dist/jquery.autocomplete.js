@@ -72,6 +72,7 @@
                 onSearchComplete: noop,
                 onSearchError: noop,
                 containerClass: 'autocomplete-suggestions',
+                containerElement: '<div class="' + options.containerClass + '" style="position: absolute; display: none;"></div>',
                 tabDisabled: false,
                 dataType: 'text',
                 currentRequest: null,
@@ -82,7 +83,10 @@
                 paramName: 'query',
                 transformResult: function (response) {
                     return typeof response === 'string' ? $.parseJSON(response) : response;
-                }
+                },
+                suggestWrapper: function suggestionWrapper(i, suggestion, className, formatResult, value) {
+                  return '<div class="' + className + '" data-cod="' + suggestion.cod + '" data-index="' + i + '">' + formatResult(suggestion, value) + '</div>';
+                },
             };
 
         // Shared variables:
@@ -454,6 +458,10 @@
                 filter = options.lookupFilter,
                 limit = parseInt(options.lookupLimit, 10),
                 data;
+                options.params[options.paramName] = query;
+                if (options.onSearchStart.call(that.element, options.params) === false) {
+                  return;
+                }
 
             data = {
                 suggestions: $.grep(options.lookup, function (suggestion) {
