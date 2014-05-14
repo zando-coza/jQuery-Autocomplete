@@ -149,7 +149,7 @@
                 }
             };
 
-            that.suggestionsContainer = Autocomplete.utils.createNode(options.containerClass);
+            that.suggestionsContainer = Autocomplete.utils.createNode(options.containerElement);
 
             container = $(that.suggestionsContainer);
 
