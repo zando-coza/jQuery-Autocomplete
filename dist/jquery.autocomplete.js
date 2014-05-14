@@ -574,9 +574,13 @@
             }
 
             // Build suggestions inner HTML:
-            $.each(that.suggestions, function (i, suggestion) {
-                html += '<div class="' + className + '" data-index="' + i + '">' + formatResult(suggestion, value) + '</div>';
-            });
+//            $.each(that.suggestions, function (i, suggestion) {
+//                html += '<div class="' + className + '" data-index="' + i + '">' + formatResult(suggestion, value) + '</div>';
+//            });
+
+              $.each(that.suggestions, function (i, suggestion) {
+                html += that.options.suggestWrapper(i, suggestion, className, formatResult, value);
+              });
 
             // If width is auto, adjust width before displaying suggestions,
             // because if instance was created before input had width, it will be zero.
